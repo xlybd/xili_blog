@@ -8,7 +8,7 @@ import (
 	"go.uber.org/zap"
 )
 
-func connectRedis() redis.Client {
+func ConnectRedis() redis.Client {
 	redisCfg := global.Config.Redis
 
 	client := redis.NewClient(&redis.Options{
