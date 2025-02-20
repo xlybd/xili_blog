@@ -9,6 +9,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// ConnectEs 初始化并返回一个配置好的 Elasticsearch 客户端
 func ConnectES() *elasticsearch.TypedClient {
 	esCfg := global.Config.ES
 	cfg := elasticsearch.Config{
@@ -17,17 +18,19 @@ func ConnectES() *elasticsearch.TypedClient {
 		Password:  esCfg.Password,
 	}
 
+	// 如果配置中指定了需要打印日志到控制台，则启用日志打印
 	if esCfg.IsConsolePrint {
 		cfg.Logger = &elastictransport.ColorLogger{
-			Output:             os.Stdout,
-			EnableRequestBody:  true,
-			EnableResponseBody: true,
+			Output:             os.Stdout, // 设置日志输出到标准输出（控制台）
+			EnableRequestBody:  true,      // 启用请求体打印
+			EnableResponseBody: true,      // 启用响应体打印
 		}
 	}
 
+	// 创建一个新的 Elasticsearch 客户端
 	client, err := elasticsearch.NewTypedClient(cfg)
 	if err != nil {
-		global.Log.Error("Failed to connect to ElasticSearch:", zap.Error(err))
+		global.Log.Error("Failed to connect to Elasticsearch", zap.Error(err))
 		os.Exit(1)
 	}
 

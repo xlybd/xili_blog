@@ -1,1 +1,3 @@
 {"level":"INFO","time":"2025-02-19T16:57:09.490+0800","caller":"core/server.go:25","msg":"server run success on ","address":"0.0.0.0:8080"}
+{"level":"INFO","time":"2025-02-20T17:05:15.742+0800","caller":"core/server.go:25","msg":"server run success on ","address":"0.0.0.0:8080"}
+{"level":"INFO","time":"2025-02-20T17:05:15.742+0800","caller":"initialize/corn.go:18","msg":"start","keysAndValues":null}
