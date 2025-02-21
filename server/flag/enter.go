@@ -1,6 +1,7 @@
 package flag
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"server/global"
@@ -17,6 +18,14 @@ var (
 	sqlExportFlag = &cli.BoolFlag{
 		Name:  "sql-export",
 		Usage: "Exports SQL data to a specified file.",
+	}
+	sqlImportFlag = &cli.StringFlag{
+		Name:  "sql-import",
+		Usage: "Imports SQL data from a specified file.",
+	}
+	esFlag = &cli.BoolFlag{
+		Name:  "es",
+		Usage: "Initializes the Elasticsearch index.",
 	}
 )
 
@@ -40,6 +49,23 @@ func Run(c *cli.Context) {
 		} else {
 			global.Log.Info("Successfully exported SQL data")
 		}
+	case c.IsSet(sqlImportFlag.Name):
+		if errs := SQLImport(c.String(sqlImportFlag.Name)); len(errs) > 0 {
+			var combinedErrors string
+			for _, err := range errs {
+				combinedErrors += err.Error() + "\n"
+			}
+			err := errors.New(combinedErrors)
+			global.Log.Error("Failed to import SQL data:", zap.Error(err))
+		} else {
+			global.Log.Info("Successfully imported SQL data")
+		}
+	case c.Bool(esFlag.Name):
+		if err := Elasticsearch(); err != nil {
+			global.Log.Error("Failed to create ES indices:", zap.Error(err))
+		} else {
+			global.Log.Info("Successfully created ES indices")
+		}
 	default:
 		err := cli.NewExitError("unknown command", 1)
 		global.Log.Error(err.Error(), zap.Error(err))
@@ -52,6 +78,8 @@ func NewApp() *cli.App {
 	app.Flags = []cli.Flag{
 		sqlFlag,
 		sqlExportFlag,
+		sqlImportFlag,
+		esFlag,
 	}
 	app.Action = Run
 	return app

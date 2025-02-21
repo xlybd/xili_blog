@@ -5,3 +5,4 @@
 {"level":"ERROR","time":"2025-02-21T15:40:35.596+0800","caller":"flag/enter.go:39","msg":"Failed to export SQL data:","error":"exit status 2"}
 {"level":"ERROR","time":"2025-02-21T15:44:48.552+0800","caller":"flag/enter.go:39","msg":"Failed to export SQL data:","error":"exit status 2"}
 {"level":"INFO","time":"2025-02-21T15:57:53.338+0800","caller":"flag/enter.go:41","msg":"Successfully exported SQL data"}
+{"level":"INFO","time":"2025-02-21T17:05:29.680+0800","caller":"flag/enter.go:67","msg":"Successfully created ES indices"}
