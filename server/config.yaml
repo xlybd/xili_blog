@@ -58,7 +58,7 @@ system:
     env: release
     router_prefix: api
     use_multipoint: true
-    sessions_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    sessions_secret: fxOzDD5PlH0IivDao_gJaWUtG_xiEgjLmIlHUNuvSlc=
     oss_type: local
 upload:
     size: 20
