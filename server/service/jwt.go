@@ -25,7 +25,7 @@ func (jwtService *JwtService) GetRedisJWT(uuid uuid.UUID) (string, error) {
 }
 
 func (jwtService *JwtService) JoinInBlacklist(jwtList database.JwtBlacklist) error {
-	if err := global.DB.Create(*&jwtList).Error; err != nil {
+	if err := global.DB.Create(&jwtList).Error; err != nil {
 		return err
 	}
 	global.BlackCache.SetDefault(jwtList.Jwt, struct{}{})
