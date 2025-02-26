@@ -1,6 +1,7 @@
 package api
 
 import (
+	"errors"
 	"server/global"
 	"server/model/database"
 	"server/model/request"
@@ -10,6 +11,7 @@ import (
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"github.com/go-redis/redis"
 	"go.uber.org/zap"
 )
 
@@ -99,7 +101,7 @@ func (userApi *UserApi) QQLogin(c *gin.Context) {
 		return
 	}
 
-	accessTokenResponse, err := qqService.GetAccessTokenBycode(code)
+	accessTokenResponse, err := qqService.GetAccessTokenByCode(code)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
@@ -121,7 +123,7 @@ func (userApi *UserApi) TokenNext(c *gin.Context, user database.User) {
 		return
 	}
 
-	baseClaims := requrest.baseClaims{
+	baseClaims := request.BaseClaims{
 		UserID: user.ID,
 		UUID:   user.UUID,
 		RoleID: user.RoleID,
@@ -145,7 +147,49 @@ func (userApi *UserApi) TokenNext(c *gin.Context, user database.User) {
 		return
 	}
 
-	if !global.Config.System.UserMultipoint {
+	if !global.Config.System.UseMultipoint {
+		utils.SetRefreshToken(c, refreshToken, int(refreshClaims.ExpiresAt.Unix()-time.Now().Unix()))
+		c.Set("user_id", user.ID)
+		response.OkWithDetailed(response.Login{
+			User:                 user,
+			AccessToken:          accessToken,
+			AccessTokenExpiresAt: accessClaims.ExpiresAt.Unix() * 1000,
+		}, "Successful login", c)
+		return
+	}
+
+	if jwtStr, err := jwtService.GetRedisJWT(user.UUID); errors.Is(err, redis.Nil) {
+		if err := jwtService.SetRedisJWT(refreshToken, user.UUID); err != nil {
+			global.Log.Error("Failed to set login status:", zap.Error(err))
+			response.FailWithMessage("Failed to set login status", c)
+			return
+		}
+
+		utils.SetRefreshToken(c, refreshToken, int(refreshClaims.ExpiresAt.Unix()-time.Now().Unix()))
+		c.Set("user_id", user.ID)
+		response.OkWithDetailed(response.Login{
+			User:                 user,
+			AccessToken:          accessToken,
+			AccessTokenExpiresAt: accessClaims.ExpiresAt.Unix() * 1000,
+		}, "Successful login", c)
+	} else if err != nil {
+		global.Log.Error("Failed to set login status:", zap.Error(err))
+		response.FailWithMessage("Failed to set login status", c)
+	} else {
+		var blacklist database.JwtBlacklist
+		blacklist.Jwt = jwtStr
+		if err := jwtService.JoinInBlacklist(blacklist); err != nil {
+			global.Log.Error("Failed to invalidate jwt:", zap.Error(err))
+			response.FailWithMessage("Failed to invalidate jwt", c)
+			return
+		}
+
+		if err := jwtService.SetRedisJWT(refreshToken, user.UUID); err != nil {
+			global.Log.Error("Failed to set login status:", zap.Error(err))
+			response.FailWithMessage("Failed to set login status", c)
+			return
+		}
+
 		utils.SetRefreshToken(c, refreshToken, int(refreshClaims.ExpiresAt.Unix()-time.Now().Unix()))
 		c.Set("user_id", user.ID)
 		response.OkWithDetailed(response.Login{
@@ -154,8 +198,6 @@ func (userApi *UserApi) TokenNext(c *gin.Context, user database.User) {
 			AccessTokenExpiresAt: accessClaims.ExpiresAt.Unix() * 1000,
 		}, "Successful login", c)
 	}
-
-	if jwtStr,err:=jwt
 }
 
 func (userApi *UserApi) ForgotPassword(c *gin.Context) {}

@@ -23,5 +23,3 @@ func (b *BaseRouter) InitBaseRouter(Router *gin.RouterGroup) {
 }
 
 //POST GET DELETE PUT
-
-

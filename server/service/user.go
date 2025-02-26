@@ -66,7 +66,7 @@ func (userService *UserService) QQLogin(accessTokenResponse other.AccessTokenRes
 		user.Openid = accessTokenResponse.Openid
 		user.Avatar = userInfoResponse.FigureurlQQ2
 		user.RoleID = appTypes.User
-		user.Register = apptypes.QQ
+		user.Register = appTypes.QQ
 
 		if err := global.DB.Create(&user).Error; err != nil {
 			return database.User{}, err
