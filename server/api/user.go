@@ -200,7 +200,9 @@ func (userApi *UserApi) TokenNext(c *gin.Context, user database.User) {
 	}
 }
 
-func (userApi *UserApi) ForgotPassword(c *gin.Context) {}
+func (userApi *UserApi) ForgotPassword(c *gin.Context) {
+	
+}
 
 func (userApi *UserApi) UserCard(c *gin.Context) {}
 
