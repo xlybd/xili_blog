@@ -1,10 +1,70 @@
 package api
 
-import "github.com/gin-gonic/gin"
+import (
+	"server/global"
+	"server/model/request"
+	"server/model/response"
+
+	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
+)
 
 type ImageApi struct {
 }
 
-func (imageApi *ImageApi) ImageUpload(c *gin.Context) {}
-func (imageApi *ImageApi) ImageDelete(c *gin.Context) {}
-func (imageApi *ImageApi) ImageList(c *gin.Context)   {}
+func (imageApi *ImageApi) ImageUpload(c *gin.Context) {
+	_, header, err := c.Request.FormFile("image")
+	if err != nil {
+		global.Log.Error(err.Error(), zap.Error(err))
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+
+	url, err := ImageService.ImageUpload(header)
+	if err != nil {
+		global.Log.Error("Failed to upload image:", zap.Error(err))
+		response.FailWithMessage("Failed to upload image", c)
+		return
+	}
+
+	response.OkWithDetailed(response.ImageUpload{
+		Url:     url,
+		OssType: global.Config.System.OssType,
+	}, "Successfully uploaded image", c)
+}
+
+func (imageApi *ImageApi) ImageDelete(c *gin.Context) {
+	var req request.ImageDelete
+	err := c.ShouldBindJSON(&req)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+
+	err = ImageService.ImageDelete(req)
+	if err != nil {
+		global.Log.Error("Failed to delete image", zap.Error(err))
+		response.FailWithMessage("Failed to delete image", c)
+		return
+	}
+}
+func (imageApi *ImageApi) ImageList(c *gin.Context) {
+	var pageInfo request.ImageList
+	err := c.ShouldBindQuery(&pageInfo)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+
+	list, total, err := ImageService.ImageList(pageInfo)
+	if err != nil {
+		global.Log.Error("Failed to get image list:", zap.Error(err))
+		response.FailWithMessage("Failed to get image list", c)
+		return
+	}
+
+	response.OkWithData(response.PageResult{
+		List:  list,
+		Total: total,
+	}, c)
+}
