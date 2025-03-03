@@ -7,7 +7,7 @@ import (
 	"server/model/request"
 	"server/utils"
 
-	"github.com/elastic/go-elasticsearch/v8/typedapi/eql/search"
+	"github.com/elastic/go-elasticsearch/v8/typedapi/core/search"
 	"github.com/elastic/go-elasticsearch/v8/typedapi/types"
 	"github.com/elastic/go-elasticsearch/v8/typedapi/types/enums/sortorder"
 )
@@ -17,8 +17,8 @@ type ArticleService struct {
 
 func (articleService *ArticleService) ArticleInfoByID(id string) (elasticsearch.Article, error) {
 	go func() {
-		articleViews := articleService.NewArticleView()
-		articleViews.Set(id)
+		articleView := articleService.NewArticleView()
+		_ = articleView.Set(id)
 	}()
 	return articleService.Get(id)
 }
