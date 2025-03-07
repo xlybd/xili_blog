@@ -12,6 +12,7 @@ import (
 type ImageApi struct {
 }
 
+// ImageUpload 上传图片
 func (imageApi *ImageApi) ImageUpload(c *gin.Context) {
 	_, header, err := c.Request.FormFile("image")
 	if err != nil {
@@ -20,19 +21,20 @@ func (imageApi *ImageApi) ImageUpload(c *gin.Context) {
 		return
 	}
 
-	url, err := ImageService.ImageUpload(header)
+	url, err := imageService.ImageUpload(header)
 	if err != nil {
 		global.Log.Error("Failed to upload image:", zap.Error(err))
 		response.FailWithMessage("Failed to upload image", c)
 		return
 	}
-
+	// local 返回格式 /uploads/image/fileName | qiniu 返回格式 http(s)://image.xxx.xx/fileName
 	response.OkWithDetailed(response.ImageUpload{
 		Url:     url,
 		OssType: global.Config.System.OssType,
 	}, "Successfully uploaded image", c)
 }
 
+// ImageDelete 删除图片
 func (imageApi *ImageApi) ImageDelete(c *gin.Context) {
 	var req request.ImageDelete
 	err := c.ShouldBindJSON(&req)
@@ -41,13 +43,16 @@ func (imageApi *ImageApi) ImageDelete(c *gin.Context) {
 		return
 	}
 
-	err = ImageService.ImageDelete(req)
+	err = imageService.ImageDelete(req)
 	if err != nil {
-		global.Log.Error("Failed to delete image", zap.Error(err))
+		global.Log.Error("Failed to delete image:", zap.Error(err))
 		response.FailWithMessage("Failed to delete image", c)
 		return
 	}
+	response.OkWithMessage("Successfully deleted image", c)
 }
+
+// ImageList 获取图片列表
 func (imageApi *ImageApi) ImageList(c *gin.Context) {
 	var pageInfo request.ImageList
 	err := c.ShouldBindQuery(&pageInfo)
@@ -56,15 +61,14 @@ func (imageApi *ImageApi) ImageList(c *gin.Context) {
 		return
 	}
 
-	list, total, err := ImageService.ImageList(pageInfo)
+	imageList, total, err := imageService.ImageList(pageInfo)
 	if err != nil {
 		global.Log.Error("Failed to get image list:", zap.Error(err))
 		response.FailWithMessage("Failed to get image list", c)
 		return
 	}
-
 	response.OkWithData(response.PageResult{
-		List:  list,
+		List:  imageList,
 		Total: total,
 	}, c)
 }
