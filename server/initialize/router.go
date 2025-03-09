@@ -1,13 +1,14 @@
 package initialize
 
 import (
-	"github.com/gin-contrib/sessions"
-	"github.com/gin-contrib/sessions/cookie"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"server/global"
 	"server/middleware"
 	"server/router"
+
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
+	"github.com/gin-gonic/gin"
 )
 
 // InitRouter 初始化路由
@@ -40,11 +41,12 @@ func InitRouter() *gin.Engine {
 		routerGroup.InitCommentRouter(privateGroup, publicGroup, adminGroup)
 		routerGroup.InitFeedbackRouter(privateGroup, publicGroup, adminGroup)
 	}
-    {
+	{
 		routerGroup.InitImageRouter(adminGroup)
 		routerGroup.InitAdvertisementRouter(adminGroup, publicGroup)
 		routerGroup.InitFriendLinkRouter(adminGroup, publicGroup)
 		routerGroup.InitWebsiteRouter(adminGroup, publicGroup)
-    }
+		routerGroup.InitConfigRouter(adminGroup)
+	}
 	return Router
 }
