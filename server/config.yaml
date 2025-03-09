@@ -64,7 +64,7 @@ upload:
     size: 20
     path: uploads
 website:
-    logo: ""
+    logo: "/uploads/image/2674ab63caee3cefa2009b24b7a668ce-20250309111226.png"
     full_logo: ""
     title: 博客标题-xxx的个人博客
     slogan: 博客标题

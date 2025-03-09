@@ -62,6 +62,9 @@ require (
 	github.com/pelletier/go-toml/v2 v2.2.2 // indirect
 	github.com/qiniu/go-sdk/v7 v7.25.2 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
+	github.com/tidwall/gjson v1.18.0 // indirect
+	github.com/tidwall/match v1.1.1 // indirect
+	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ua-parser/uap-go v0.0.0-20250213224047-9c035f085b90 // indirect
 	github.com/ugorji/go/codec v1.2.12 // indirect
