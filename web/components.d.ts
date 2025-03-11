@@ -8,7 +8,32 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AuthPopover: typeof import('./src/components/common/AuthPopover.vue')['default']
+    ElAvatar: typeof import('element-plus/es')['ElAvatar']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
+    ElDivider: typeof import('element-plus/es')['ElDivider']
+    ElFooter: typeof import('element-plus/es')['ElFooter']
+    ElForm: typeof import('element-plus/es')['ElForm']
+    ElFormItem: typeof import('element-plus/es')['ElFormItem']
+    ElImage: typeof import('element-plus/es')['ElImage']
+    ElInput: typeof import('element-plus/es')['ElInput']
+    ElLink: typeof import('element-plus/es')['ElLink']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
+    ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElPopover: typeof import('element-plus/es')['ElPopover']
+    ElRow: typeof import('element-plus/es')['ElRow']
+    ElSpace: typeof import('element-plus/es')['ElSpace']
+    ElTag: typeof import('element-plus/es')['ElTag']
+    ElText: typeof import('element-plus/es')['ElText']
+    ForgotPasswordForm: typeof import('./src/components/forms/ForgotPasswordForm.vue')['default']
+    LoginForm: typeof import('./src/components/forms/LoginForm.vue')['default']
+    Logo: typeof import('./src/components/widgets/Logo.vue')['default']
+    RegisterForm: typeof import('./src/components/forms/RegisterForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    WebFooter: typeof import('./src/components/layout/WebFooter.vue')['default']
+    WebNavbar: typeof import('./src/components/layout/WebNavbar.vue')['default']
   }
 }

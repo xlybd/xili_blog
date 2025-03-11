@@ -1,24 +1,24 @@
 <template>
-    {{ url }}
-    </template>
-    
-    <script setup lang="ts">
-    import { qqLoginURL } from '@/api/base';
-    import { ref } from 'vue';
-    
-    const url = ref('')
-    
-    const getUrl = async ()=>{
-        const res = await qqLoginURL()
-        if (res.code===0){
-            url.value=res.data
-        }
+    <div class="web">
+      <el-container>
+        <router-view/>
+        <el-footer>
+          <web-footer/>
+        </el-footer>
+      </el-container>
+    </div>
+  </template>
+  
+  <script setup lang="ts">
+    import WebFooter from '@/components/layout/WebFooter.vue';
+  </script>
+  
+  <style scoped lang="scss">
+  .web {
+    .el-footer {
+      height: auto;
+      border: 1px solid #DCDFE6;
     }
-    
-    getUrl()
-    </script>
-    
-    <style scoped lang="scss">
-    
-    </style>
-    
+  }
+  </style>
+  
