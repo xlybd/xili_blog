@@ -8,6 +8,8 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    ArticleCreateForm: typeof import('./src/components/forms/ArticleCreateForm.vue')['default']
+    ArticleUpdateForm: typeof import('./src/components/forms/ArticleUpdateForm.vue')['default']
     AuthPopover: typeof import('./src/components/common/AuthPopover.vue')['default']
     Breadcrumb: typeof import('./src/components/layout/Breadcrumb.vue')['default']
     CommentItem: typeof import('./src/components/common/CommentItem.vue')['default']
@@ -36,13 +38,18 @@ declare module 'vue' {
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElOption: typeof import('element-plus/es')['ElOption']
+    ElPagination: typeof import('element-plus/es')['ElPagination']
     ElPopover: typeof import('element-plus/es')['ElPopover']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElSpace: typeof import('element-plus/es')['ElSpace']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    ElSwitch: typeof import('element-plus/es')['ElSwitch']
+    ElTable: typeof import('element-plus/es')['ElTable']
+    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTag: typeof import('element-plus/es')['ElTag']
     ElText: typeof import('element-plus/es')['ElText']
+    ElUpload: typeof import('element-plus/es')['ElUpload']
     ForgotPasswordForm: typeof import('./src/components/forms/ForgotPasswordForm.vue')['default']
     LoginForm: typeof import('./src/components/forms/LoginForm.vue')['default']
     Logo: typeof import('./src/components/widgets/Logo.vue')['default']
@@ -52,6 +59,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     UserActivityChart: typeof import('./src/components/widgets/UserActivityChart.vue')['default']
     UserCard: typeof import('./src/components/widgets/UserCard.vue')['default']
+    UserCardPopover: typeof import('./src/components/common/UserCardPopover.vue')['default']
     WebFooter: typeof import('./src/components/layout/WebFooter.vue')['default']
     WebNavbar: typeof import('./src/components/layout/WebNavbar.vue')['default']
   }
