@@ -5,9 +5,9 @@
       <el-container class="main-content">
         <div class="container">
           <el-main>
-            <advertisement/>
-            <daily-news/>
             <article-list/>
+            <daily-news/>
+            <advertisement/>
           </el-main>
   
           <el-aside>
