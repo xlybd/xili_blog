@@ -38,16 +38,16 @@ mysql:
 qiniu:
     zone: z0
     bucket: xili-blog
-    img_path: http://image.xxx.xxx/
+    img_path: http://image.xlybd.com/
     access_key: qZlw7PQOGt-QbxvZ7HZ6WchsQ-pOmY6Togow5LdT
     secret_key: rRLlXm3_gG5e74kxP8vJpwXX2cGbBdwZKWWLTUOR
     use_https: true
     use_cdn_domains: true
 qq:
-    enable: false
-    app_id: "000000000"
-    app_key: xxxxxxxxxxxxxxxx
-    redirect_uri: http://xxx.xxx/xxx
+    enable: true
+    app_id: "102727333"
+    app_key: 52ub6OVQ8g4NXVKz
+    redirect_uri: http://xlybd.com/login?flag=qq
 redis:
     address: 127.0.0.1:6379
     password: ""
@@ -66,21 +66,21 @@ upload:
 website:
     logo: ""
     full_logo: ""
-    title: 博客标题-xxx的个人博客
-    slogan: 博客标题
-    slogan_en: Blog Title
-    description: 博客描述
+    title: 析离的个人博客
+    slogan: 析离
+    slogan_en: Graxil
+    description: Get busy living or get busy dying
     version: 1.0.0
-    created_at: "2025-1-15"
-    icp_filing: icp备案号
-    public_security_filing: 公安备案号
-    bilibili_url: https://space.bilibili.com/xxx
-    gitee_url: https://gitee.com/xxx
-    github_url: https://github.com/xxx/
-    name: 昵称
-    job: 工作
-    address: 地址
-    email: xxx@qq.com
+    created_at: "2025-1-5"
+    icp_filing: "京ICP备2025113079号"
+    public_security_filing: ""
+    bilibili_url: 
+    gitee_url: https://gitee.com/xlybd
+    github_url: https://github.com/xlybd
+    name: 析离
+    job: 运维
+    address: 北京
+    email: 1535844075@qq.com
     qq_image: ""
     wechat_image: ""
 zap:

@@ -1,6 +1,6 @@
 <template>
     <div class="login-form">
-      <el-image class="login-image" src="/image/xiaochun_character_elements_transparent.png" alt=""/>
+      <el-image class="login-image" src="/image/character_elements_transparent.png" alt=""/>
       <el-form
           ref="loginForm"
           :model="loginFormData"
@@ -127,9 +127,11 @@
   <style scoped lang="scss">
   .login-form {
     display: flex;
+    align-items: center;  /* 让图片和表单垂直居中 */
+    gap: 20px;  /* 设置图片和表单之间的间距 */
   
     .login-image {
-      max-width: 160px;
+      max-width: 150px;
       width: 100%;
     }
   

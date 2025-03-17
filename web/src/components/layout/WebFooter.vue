@@ -40,7 +40,7 @@
           </div>
         </div>
         <div class="footer-right">
-          <el-image src="/image/xiaochun_character_transparent.png" alt=""/>
+          <el-image src="/image/character_transparent.png" alt=""/>
         </div>
       </div>
     </div>
@@ -99,19 +99,14 @@
   const publicSecurityFilingLink = computed(() => "http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=" + websiteStore.state.websiteInfo.public_security_filing.match(/\d+/))
   const socialLinks = computed(() => [
     {
-      src: "/image/bilibili.png",
+      src: "/image/github.png",
       alt: "",
-      url: websiteStore.state.websiteInfo.bilibili_url
+      url: websiteStore.state.websiteInfo.github_url
     },
     {
       src: "/image/gitee.png",
       alt: "",
       url: websiteStore.state.websiteInfo.gitee_url
-    },
-    {
-      src: "/image/github.png",
-      alt: "",
-      url: websiteStore.state.websiteInfo.github_url
     },
   ])
   

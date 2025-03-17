@@ -1,6 +1,9 @@
 <template>
     <div class="carousel">
       <el-carousel trigger="click" height="700px">
+        {
+
+        }
         <el-carousel-item v-for="item in imgList" :key="item">
           <el-image fit="cover" :src=item alt=""></el-image>
         </el-carousel-item>
@@ -40,6 +43,17 @@
         height: 100%;
       }
     }
+
+    /* 修改轮播图左右切换按钮 */
+  :deep(.el-carousel__arrow) {
+    background-color: rgba(255, 255, 255, 0.3) !important; /* 半透明白色 */
+    color: white !important; /* 箭头颜色 */
+    border-radius: 50%; /* 按钮变圆 */
+    width: 50px;
+    height: 50px;
+    transition: background-color 0.3s ease-in-out;
+  }
+
   }
   </style>
   

@@ -1,6 +1,6 @@
 <template>
     <div class="register-form">
-      <el-image class="register-image" src="/image/xiaochun_character_elements_transparent.png" alt=""/>
+      <el-image class="register-image" src="/image/character_elements_transparent.png" alt=""/>
       <el-form
           ref="registerForm"
           :model="registerFormData"
@@ -176,6 +176,8 @@
   <style scoped lang="scss">
   .register-form {
     display: flex;
+    align-items: center;  /* 让图片和表单垂直居中 */
+    gap: 20px;  /* 设置图片和表单之间的间距 */
   
     .register-image {
       max-width: 240px;

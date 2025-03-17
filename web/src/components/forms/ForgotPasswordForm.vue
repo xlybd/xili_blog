@@ -1,6 +1,6 @@
 <template>
     <div class="forgot-password-form">
-      <el-image class="forgot-password-image" src="/image/xiaochun_character_elements_transparent.png" alt=""/>
+      <el-image class="forgot-password-image" src="/image/character_elements_transparent.png" alt=""/>
       <el-form
           ref="forgotPasswordForm"
           :model="forgotPasswordFormData"
@@ -160,6 +160,8 @@
   <style scoped lang="scss">
   .forgot-password-form {
     display: flex;
+    align-items: center;  /* 让图片和表单垂直居中 */
+    gap: 20px;  /* 设置图片和表单之间的间距 */
   
     .forgot-password-image {
       max-width:200px;
