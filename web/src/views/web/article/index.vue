@@ -26,13 +26,13 @@
                 <div class="comment-tool">
                   <el-popover width="502" trigger="click">
                     <template #reference>
-                      <el-avatar src="/emoji/xiaochun_emoji_01.png"/>
+                      <el-avatar src="/emoji/emoji_01.webp"/>
                     </template>
                     <template #default>
                       <el-image
                           v-for="number in numbers"
-                          :src="'/emoji/xiaochun_emoji_'+number+'.png'"
-                          @click="content=content+'![]('+'/emoji/xiaochun_emoji_'+number+'.png'+')'"
+                          :src="'/emoji/emoji_'+number+'.webp'"
+                          @click="content=content+'![]('+'/emoji/emoji_'+number+'.webp'+')'"
                       />
                     </template>
                   </el-popover>
