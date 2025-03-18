@@ -45,8 +45,8 @@ qiniu:
     use_cdn_domains: true
 qq:
     enable: true
-    app_id: "102727333"
-    app_key: 52ub6OVQ8g4NXVKz
+    app_id: "102731602"
+    app_key: QhnlZDdruiAQaXEi
     redirect_uri: http://xlybd.com/login?flag=qq
 redis:
     address: 127.0.0.1:6379
