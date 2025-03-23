@@ -275,7 +275,7 @@ roleRef:
 *负责建立PVC并调用NFS provisioner进行预定的工作，并让PV与PVC建立关联*
 sc.yaml 需要把IP指定自己nfs服务器地址
 ```bash
-```yaml
+yaml
 ## 创建NFS资源的StorageClass
 apiVersion: storage.k8s.io/v1
 #存储类的资源名称
