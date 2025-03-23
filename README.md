@@ -130,6 +130,7 @@ kubeadm init \
   --pod-network-cidr=10.244.0.0/16 \
   --ignore-preflight-errors=all
 ```
+
 apiserver-advertise-address 集群通告地址
 image-repository 由于默认拉取镜像地址k8s.gcr.io国内无法访问，这里指定阿里云镜像仓库地址
 kubernetes-version K8s版本，与上面安装的一致
