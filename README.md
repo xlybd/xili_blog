@@ -1,5 +1,4 @@
-## go_blog
-gin + vue3 开发的个人博客项目
+## go_blog gin + vue3 开发的个人博客项目
 
 本地测试
 开发工具及版本
