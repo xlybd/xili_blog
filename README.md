@@ -1,4 +1,4 @@
-go_blog
+#go_blog
 gin + vue3 开发的个人博客项目
 
 本地测试
