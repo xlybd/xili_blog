@@ -348,5 +348,5 @@ sudo kubectl apply -f rbac.yaml
 sudo kubectl apply -f sc.yaml
 ```
 
-
+5.1 
 
