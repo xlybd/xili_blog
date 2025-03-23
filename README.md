@@ -3,11 +3,11 @@ gin + vue3 开发的个人博客项目
 
 本地测试
 开发工具及版本
-golang: 1.23.5
+golang: 1.23.1
 
-node: v22.13.0
+node: v22.14.0
 
-docker: 27.4.0
+docker: 26.1.4
 
 编译器：vscode
 
