@@ -7,9 +7,9 @@ captcha:
 email:
     host: smtp.qq.com
     port: 465
-    from: 1535844075@qq.com
-    nickname: xili_blog
-    secret: xglxthhjxyechcaa
+    from: xxx@qq.com
+    nickname: 发件人昵称
+    secret: xxxxxxxxxxxxxxxx
     is_ssl: true
 es:
     url: http://127.0.0.1:9200
@@ -17,11 +17,11 @@ es:
     password: ""
     is_console_print: true
 gaode:
-    enable: true
-    key: 66f3c47afb879b2f8eefe49729ea20b1
+    enable: false
+    key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 jwt:
-    access_token_secret: ImBBsHvgODPAdfQbhwI-1YnQWuwD6hG11Ams7h3DMr8=
-    refresh_token_secret: 1oCGX6VW94ogXTOdtKLTemA5yRBTJcO5i5y9XZm8IU8=
+    access_token_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    refresh_token_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     access_token_expiry_time: 2h
     refresh_token_expiry_time: 7d
     issuer: go_blog
@@ -37,17 +37,17 @@ mysql:
     log_mode: info
 qiniu:
     zone: z0
-    bucket: xili-blog
-    img_path: http://image.xlybd.com/
-    access_key: qZlw7PQOGt-QbxvZ7HZ6WchsQ-pOmY6Togow5LdT
-    secret_key: rRLlXm3_gG5e74kxP8vJpwXX2cGbBdwZKWWLTUOR
+    bucket: xxx
+    img_path: https://xxx.xxx/
+    access_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    secret_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     use_https: true
     use_cdn_domains: true
 qq:
-    enable: true
-    app_id: "102731838"
-    app_key: Z1LUQWQ8boobCamj
-    redirect_uri: http://xlybd.com/login?flag=qq
+    enable: false
+    app_id: "000000000"
+    app_key: xxxxxxxxxxxxxxxx
+    redirect_uri: http://xxx.xxx/xxx
 redis:
     address: 127.0.0.1:6379
     password: ""
@@ -58,7 +58,7 @@ system:
     env: release
     router_prefix: api
     use_multipoint: true
-    sessions_secret: fxOzDD5PlH0IivDao_gJaWUtG_xiEgjLmIlHUNuvSlc=
+    sessions_secret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     oss_type: local
 upload:
     size: 20
@@ -66,21 +66,21 @@ upload:
 website:
     logo: ""
     full_logo: ""
-    title: 析离的个人博客
-    slogan: 析离
-    slogan_en: Graxil
-    description: Get busy living or get busy dying
+    title: 博客标题-xxx的个人博客
+    slogan: 博客标题
+    slogan_en: Blog Title
+    description: 博客描述
     version: 1.0.0
-    created_at: "2025-1-5"
-    icp_filing: "京ICP备2025113079号"
-    public_security_filing: ""
-    bilibili_url: 
-    gitee_url: https://gitee.com/xlybd
-    github_url: https://github.com/xlybd
-    name: 析离
-    job: 运维
-    address: 北京
-    email: 1535844075@qq.com
+    created_at: "2025-1-15"
+    icp_filing: icp备案号
+    public_security_filing: 公安备案号
+    bilibili_url: https://space.bilibili.com/xxx
+    gitee_url: https://gitee.com/xxx
+    github_url: https://github.com/xxx/
+    name: 昵称
+    job: 工作
+    address: 地址
+    email: xxx@qq.com
     qq_image: ""
     wechat_image: ""
 zap:
