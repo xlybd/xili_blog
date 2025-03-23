@@ -16,40 +16,43 @@ docker: 27.4.0
 
 1.1 查看cpu信息 k8s安装至少需要2核4G的环境，否则会安装失败
 
+```bash
 lscpu
+```
 
 1.2 安装k8s时，临时关闭swap ，如果不关闭在执行kubeadm部分命令会报错
 
+```bash
 swapoff -a  *# 临时* 
-
 sed -ri 's/.*swap.*/#&/' /etc/fstab    *# 永久*
+```
 
 1.3 安装k8s时，可以临时关闭selinux，减少额外配置
-
+```bash
 sed -i 's/enforcing/disabled/' /etc/selinux/config  *# 永久* 
-
 setenforce 0  *# 临时*
+```
 
 1.4 关闭防火墙
-
+```bash
 systemctl stop firewalld
 systemctl disable firewalld
-
+```
 1.5 设置网桥参数
-
+```bash
 cat << EOF > /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 EOF
 
 sysctl --system  *# 生效*
-
+```
 1.6 修改hosts文件 方便查看域名映射
-
+```bash
 vim /etc/hosts
  追加以下内容, 将IP更换为真实IP
 X.X.X.X master
-
+```
 让修改生效
 
 systemctl restart network
